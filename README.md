@@ -9,7 +9,7 @@ Code du cours sur les API avec Symfony
 4. Jouez les fixtures : `php bin/console d:f:l --no-interaction`
 5. Lancez le server : `symfony serve` ou `php -S localhost:3000 -t public`
 
-# Erreurs :
+# Débogage d'erreurs d'installation :
 **1** 
 `but your php version (8.0.0) does not satisfy that requirement.`
 * Spécifier la version php dans composer.json comme 8.0
@@ -26,7 +26,7 @@ Code du cours sur les API avec Symfony
 `Executing script cache:clear [KO]
  [KO]
 Script cache:clear returned with error code 1`
-`!!
+```!!
 !!  Warning: Module "openssl" is already loaded in Unknown on line 0
 !!
 !!  In ArrayNode.php line 319:
@@ -39,15 +39,17 @@ Script cache:clear returned with error code 1`
 !!  
 
 !!
-!!`
-Script @auto-scripts was called via pocomposer req orm-pack --unpack
-`>> composer require doctrine/doctrine-migrations-bundle "^2.0" `
+!!
+``` 
+
+`Script @auto-scripts was called via pocomposer req orm-pack --unpack
+composer require doctrine/doctrine-migrations-bundle "^2.0" `
 * https://github.com/doctrine/DoctrineMigrationsBundle/blob/3.0.x/UPGRADE.md
 
 * Changer
 `doctrine_migrations:
     dir_name: '%kernel.project_dir%/src/Migrations'
-    namespace: DoctrineMigrations`
+    namespace: DoctrineMigrations` 
     avec
     `doctrine_migrations:
     migrations_paths:
