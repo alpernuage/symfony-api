@@ -55,5 +55,13 @@ composer require doctrine/doctrine-migrations-bundle "^2.0" `
     migrations_paths:
         'DoctrineMigrations': '%kernel.project_dir%/src/Migrations'`
 dans symfony-api\config\packages\doctrine_migrations.yaml
-
 * Ensuite `composer update`
+
+**5** 
+Si cette erreur s'affiche :
+`In Lorem.php line 95:`
+`In Lorem.php line 134:`
+`join(): Argument #2 ($array) must be of type ?array, string given`
+* Modifier ligne 95 `return join(' ', $words) . '.';`
+* Modifier ligne 134 `return join(' ', static::sentences($nbSentences));`
+* `php bin/console d:f:l --no-interaction`
