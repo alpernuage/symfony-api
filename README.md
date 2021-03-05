@@ -11,14 +11,22 @@ Code du cours sur les API avec Symfony
 
 # Erreurs :
 1
+`but your php version (8.0.0) does not satisfy that requirement.`
+* Spécifier la version php dans composer.json comme 8.0
+
+2
+`- Root composer.json requires fzaninotto/faker ^1.9 -> satisfiable by fzaninotto/faker[v1.9.0, v1.9.1, v1.9.2].`
+* Changer `"fzaninotto/faker": "^1.9"` dans composer.json avec 1.5
+
+3
 `PHP Fatal error:  Could not check compatibility between App\DataFixtures\AppFixtures::load(Doctrine\Common\Persistence\ObjectManager $manager) and Doctrine\Common\DataFixtures\FixtureInterface::load(Doctrine\Persistence\ObjectManager $manager), because class Doctrine\Common\Persistence\ObjectManager is not available in C:\xampp\htdocs\cours-api-symfony\src\DataFixtures\AppFixtures.php on line 13`
 * Changer `Doctrine\Common\Persistence\ObjectManager` avec `Doctrine\Persistence\ObjectManager $manager` dans AppFixtures.php
 
-2
+4
 `Executing script cache:clear [KO]
  [KO]
-Script cache:clear returned with error code 1
-!!
+Script cache:clear returned with error code 1`
+`!!
 !!  Warning: Module "openssl" is already loaded in Unknown on line 0
 !!
 !!  In ArrayNode.php line 319:
@@ -31,11 +39,19 @@ Script cache:clear returned with error code 1
 !!  
 
 !!
-!!
+!!`
 Script @auto-scripts was called via pocomposer req orm-pack --unpack
->> composer require doctrine/doctrine-migrations-bundle "^2.0" `
+`>> composer require doctrine/doctrine-migrations-bundle "^2.0" `
 * https://github.com/doctrine/DoctrineMigrationsBundle/blob/3.0.x/UPGRADE.md
 
-3
-`- Root composer.json requires fzaninotto/faker ^1.9 -> satisfiable by fzaninotto/faker[v1.9.0, v1.9.1, v1.9.2].`
-* Changer `"fzaninotto/faker": "^1.9"` dans composer.json avec 1.5
+Changer
+`doctrine_migrations:
+    dir_name: '%kernel.project_dir%/src/Migrations'
+    namespace: DoctrineMigrations`
+    avec
+    `doctrine_migrations:
+    migrations_paths:
+        'DoctrineMigrations': '%kernel.project_dir%/src/Migrations'`
+dans symfony-api\config\packages\doctrine_migrations.yaml
+
+Ensuite `composer update`
