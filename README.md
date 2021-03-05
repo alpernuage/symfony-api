@@ -56,4 +56,4 @@ composer require doctrine/doctrine-migrations-bundle "^2.0" `
         'DoctrineMigrations': '%kernel.project_dir%/src/Migrations'`
 dans symfony-api\config\packages\doctrine_migrations.yaml
 
-Ensuite `composer update`
+* Ensuite `composer update`
